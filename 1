@@ -1,0 +1,15 @@
+-- สคริปต์สำหรับวาร์ปไปยังตำแหน่งที่กำหนดใน Roblox
+
+local player = game.Players.LocalPlayer  -- อ้างอิงถึงผู้เล่นปัจจุบัน
+local character = player.Character or player.CharacterAdded:Wait()  -- รอให้ตัวละครของผู้เล่นโหลด
+
+-- ตำแหน่งที่ต้องการให้ผู้เล่นวาร์ปไป
+local targetPosition = Vector3.new(791, 35, -1784)  -- กำหนดพิกัดที่ต้องการ (X, Y, Z)
+
+-- ตรวจสอบว่าตัวละครของผู้เล่นพร้อมที่จะย้ายหรือไม่
+if character and character:FindFirstChild("HumanoidRootPart") then
+    -- วาร์ปผู้เล่นไปยังตำแหน่งที่กำหนด
+    character:MoveTo(targetPosition)
+else
+    warn("ไม่สามารถวาร์ปได้ เพราะตัวละครยังไม่พร้อม")
+end
